@@ -1,28 +1,28 @@
 import { FormEvent, useState } from 'react'
-
-
+import { Form, BtnForm, CampoDePesquisa } from './styles'
 
 type Props = {
-  aoPesquisar: (termo: string) => void
+  pesquisar: (termo: string) => void
 }
 
-const FormVagas = ({ aoPesquisar }: Props) => {
+const FormVagas = ({ pesquisar }: Props) => {
   const [termo, setTermo] = useState<string>('')
 
-  const aoEnviarForm = (e: FormEvent<HTMLFormElement>) => {
+  const enviarForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    aoPesquisar(termo.toLocaleLowerCase())
+    pesquisar(termo.toLocaleLowerCase())
   }
 
   return (
-    <FormPesquisa onSubmit={aoEnviarForm}>
-      <CampoPesquisar
+    <Form onSubmit={enviarForm}>
+      <CampoDePesquisa
         placeholder="Front-end, fullstack, node, design"
         onChange={(e) => setTermo(e.target.value)}
         type="search"
       />
-      <BtnPesquisar type="submit">Pesquisar</BtnPesquisar>
-    </FormPesquisa>
+      <BtnForm type="submit">Pesquisar</BtnForm>
+    </Form>
   )
 }
+
 export default FormVagas
