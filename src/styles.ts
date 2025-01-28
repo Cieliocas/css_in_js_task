@@ -14,7 +14,6 @@ const EstiloGlobal = createGlobalStyle`
     padding-bottom: 120px;
   }
 `
-export default EstiloGlobal
 
 export const Container = styled.div`
   max-width: 1024px;
@@ -26,3 +25,5 @@ export const Container = styled.div`
     max-width: 80%;
   }
 `
+
+export default EstiloGlobal
