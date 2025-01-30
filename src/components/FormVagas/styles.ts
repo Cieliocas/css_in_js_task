@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Form = styled.form`
+export const Forms = styled.form`
   display: grid;
   grid-template-columns: 1fr auto;
   background-color: ${(props) => props.theme.corSecundaria};
@@ -20,7 +20,10 @@ export const BtnForm = styled.button`
   cursor: pointer;
 `
 
-export const CampoDePesquisa = styled.input`
+export const CampoDePesquisa = styled.input.attrs({
+  type: 'search',
+  placeholder: 'Front-end, fullstack, node, design'
+})`
   padding: 0 16px;
   outline-color: ${(props) => props.theme.corPrincipal};
 `

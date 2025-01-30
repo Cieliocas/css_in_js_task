@@ -1,5 +1,5 @@
-import { FormEvent, useState } from 'react'
-import { Form, BtnForm, CampoDePesquisa } from './styles'
+import { type FormEvent, useState, ChangeEvent } from 'react'
+import { Forms, BtnForm, CampoDePesquisa } from './styles'
 
 type Props = {
   pesquisar: (termo: string) => void
@@ -8,20 +8,25 @@ type Props = {
 const FormVagas = ({ pesquisar }: Props) => {
   const [termo, setTermo] = useState<string>('')
 
-  const enviarForm = (e: FormEvent<HTMLFormElement>) => {
+  const aoEnviarForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     pesquisar(termo.toLocaleLowerCase())
   }
 
+  const aoMudarCampo = (e: ChangeEvent<HTMLInputElement>) => {
+    setTermo(e.target.value)
+  }
+
   return (
-    <Form onSubmit={enviarForm}>
+    <Forms as="form" onSubmit={aoEnviarForm}>
       <CampoDePesquisa
-        placeholder="Front-end, fullstack, node, design"
-        onChange={(e) => setTermo(e.target.value)}
-        type="search"
+        as="input"
+        key="campoDePesquisa"
+        onChange={aoMudarCampo}
+        value={termo}
       />
-      <BtnForm type="submit">Pesquisar</BtnForm>
-    </Form>
+      <BtnForm>Pesquisar</BtnForm>
+    </Forms>
   )
 }
 
